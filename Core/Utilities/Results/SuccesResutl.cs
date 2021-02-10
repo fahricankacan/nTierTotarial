@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    class Class1
+    public class SuccesResutl:Result
     {
+        public SuccesResutl(string message):base(true,message)//Base, classı işaret eder.
+        {
+
+        }
+
+        public SuccesResutl():base(true)
+        {
+
+        }
     }
 }
