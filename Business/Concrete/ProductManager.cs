@@ -35,7 +35,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
-            return new SuccesDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed);
+            return new SuccesDataResult<List<Product>>(_productDal.GetAll());
         }
 
         public IDataResult<List<Product>> GetAllByCategory(int id)
