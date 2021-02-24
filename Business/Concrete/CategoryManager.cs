@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -12,23 +14,30 @@ namespace Business.Concrete
     {
         ICategoryDal _categoryDal;
 
-        public CategoryManager()
-        {
-        }
-
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
-        public List<Category> GetAll()
+
+       
+        public IDataResult<List<Category>> GetAll()
         {
             //İş kodları
-            return _categoryDal.GetAll().ToList();
+            return new SuccesDataResult<List<Category>>( _categoryDal.GetAll().ToList());
         }
 
-        public Category GetByID(int categoryId)
+        public IDataResult<Category> GetByID(int categoryId)
         {
-            return _categoryDal.Get(p => p.CategoryId == categoryId);
+            return new SuccesDataResult<Category>(_categoryDal.Get(p => p.CategoryId == categoryId));
+        }
+        private IResult CheckIfProductNameExist(string productName)//Product product şeklindede olabilir.
+        {
+            var result = _categoryDal.GetAll().Count;
+            if (result>=15)
+            {
+                return new ErrorResult(Messages.CategoryLimitIsExceded);
+            }
+            return new SuccesResutl();
         }
     }
 }
