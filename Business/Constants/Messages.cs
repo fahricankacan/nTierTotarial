@@ -14,6 +14,7 @@ namespace Business.Constants
         public static string ProductListed="Ürünler listelendi.";
         public static string CategoryLimitIsExceded = "Katagori limiti aşıldığı için yeni ürün eklenemiyor.";
         internal static string CategoryLimitExceded;
+        public static string AuthorizationDenied = "Bağlanamadın.";
 
         public static string ProductCountOfCategoryError { get; internal set; }
     }
