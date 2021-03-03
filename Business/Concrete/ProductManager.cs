@@ -29,7 +29,7 @@ namespace Business.Concrete
 
         }
 
-        [SecuredOperation("Product.List,Admin")]
+        //[SecuredOperation("Product.List,Admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -50,7 +50,8 @@ namespace Business.Concrete
             return new SuccesResutl(Messages.ProductAdded);
 
         }
-
+        
+        //[CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             if (DateTime.Now.Hour == 22)
