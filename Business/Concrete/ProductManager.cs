@@ -10,6 +10,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Business.BussinesAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -28,7 +29,7 @@ namespace Business.Concrete
 
         }
 
-
+        [SecuredOperation("Product.List,Admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
